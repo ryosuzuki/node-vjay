@@ -5,7 +5,7 @@
 
 
 
-$(function() {
+	$(function() {
 
   var context = new webkitAudioContext();
   var source = null;
@@ -138,7 +138,7 @@ $(function() {
 
   var crossing = 0;
 
-  $(function() {
+  (function() {
 
     window.audio = new Audio();
 
