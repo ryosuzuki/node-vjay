@@ -1,6 +1,6 @@
 <html><head>
 
-<title>: : :　SasVJ ｜ SasVJ　: : :</title>
+<title>VJay</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 
@@ -18,6 +18,7 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="./particleObject.js"></script>
 <script type="text/javascript" src="./dateformat.js"></script>
+<script type="text/javascript" src="./rainbowvis.js"></script>
 <script src="leap.min.js"></script>
 
 <link rel="SHORTCUT ICON" href="http://sascacci.web.fc2.com/sas.ico">
@@ -390,6 +391,19 @@ function drawMousePos() {
 	ctx2.textBaseline = "bottom";
 	ctx2.fillText("(" + aTextX + "," + aTextY + ")", mouseX, mouseY);
 }
+
+function drawSnow(volume) {
+	console.log('hoge');
+	ctx2.beginPath();
+	var raduius = volume;
+	ctx2.arc(70, 70, raduius, 0, Math.PI*2, false);
+	ctx2.arc(470, 170, 2 * raduius, 0, Math.PI*2, false);
+	ctx2.arc(270, 470, 0.5 * raduius, 0, Math.PI*2, false);
+	ctx2.arc(370, 570, 3 * raduius, 0, Math.PI*2, false);
+	ctx2.fill();
+}
+
+
 
 function drawClock() {
 	if (clockOn == 0) return;
@@ -908,6 +922,9 @@ function rafCallback(time) {
 	
 	drawClock();
 	
+	var volume = getAverageVolume(freqByteData);
+	drawSnow(volume);
+
 	if (ptOn) {
 		ptdraw();
 	}
@@ -916,14 +933,19 @@ function rafCallback(time) {
 	}
 	drawMousePos();
 	
-	if (fftOn) {
+//	if (fftOn) {
 		var fftBars = 512;
+		var rainbow = new Rainbow();
+		rainbow.setNumberRange(1, fftBars - 1);
+		rainbow.setSpectrum('orange', 'yellow');
 		for (var i = 0; i < fftBars; i++) {
 			var magnitude = freqByteData[i];
-			var xlog = Math.LOG10E * Math.log(i*50)*200 - 200;
-			ctx2.fillRect(xlog, 600, 2, -magnitude);
+			//var xlog = Math.LOG10E * Math.log(i*50)*200 - 200;
+			var xlog = i * 5;
+			ctx2.fillStyle = rainbow.colourAt(i);
+			ctx2.fillRect(xlog, CANVAS_HEIGHT, 2, -magnitude);
 		}
-	}
+//	}
 	drawMask();
 	drawLeap();
 }
@@ -1637,7 +1659,7 @@ window.addEventListener('keydown', function(e) {
 		} else {
 			kenjiOn = 0;
 		}
-		myParticleObject.transfer();
+//		myParticleObject.transfer();
 	}
 	if (e.keyCode == 76) { // [L]
 		lineOn = 1- lineOn;
