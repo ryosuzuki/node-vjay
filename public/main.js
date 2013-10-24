@@ -1,25 +1,83 @@
+
 $(function(){
-	var canvas = $("#mask");
-	cq(canvas[0])
+	var $canvas = $("#mask");
+
+	cq($canvas[0])
   .fillStyle("#ff0000")
   .fillRect(64, 64, 32, 32);
 
-	canvas.drawMousePosition();
-	canvas.drawCircle(100);
+	var context = new webkitAudioContext();
+	var analyser = context.createAnalyser();
 
-	var canvas = document.getElementById('mask');
-	window.webkitRequestAnimationFrame(repeat, canvas);
-	function onLoad(e) {
-		repeat();
-	}	
+	navigator.webkitGetUserMedia(
+		{video: false, audio: true}, 
+		function(stream) {
+			var microphone = context.createMediaStreamSource(stream);
+			microphone.connect(analyser);		
+		}
+	);
 
-	function repeat() {
-		console.log('hoge');
+	cq($("#mask1")[0])	
+	.fillStyle("#ff0000")
+  .fillRect(64, 64, 32, 32);
+
+	drawAnimation();
+
+	function drawAnimation() {
+		window.webkitRequestAnimationFrame(drawAnimation, $canvas);
+		cq($canvas[0]).clear();
+
+		var freqByteData = new Uint8Array(analyser.frequencyBinCount);
+		analyser.getByteFrequencyData(freqByteData); 
+
+		console.log(analyser);
+
+
+		var fftBars = freqByteData.length;
+		var rainbow = new Rainbow();
+		rainbow.setNumberRange(1, fftBars - 1);
+		rainbow.setSpectrum('orange', 'yellow');
+		for (var i = 0; i < fftBars; i++) {
+			var magnitude = freqByteData[i];
+			//var xlog = Math.LOG10E * Math.log(i*50)*200 - 200;
+			var xlog = i * 5;
+			cq($canvas[0])
+			.fillStyle(rainbow.colourAt(i))
+			.fillRect(xlog, 600, 2, -magnitude);
+		}
+
+//		var volume = getAverageVolume(freqByteData);
+//		cq($canvas[0])
+//		.arc(70, 70, 70, 0, Math.PI*2, false)
+//		.fill();
+
+
+		var size = 200;
+		var xpos = 200;
+		var ypos = 200;
+
+		var dateFormat = new DateFormat("HH:mm:ss");
+		var str = dateFormat.format(new Date());
+
+	
+/*
+		.font(size + "px" + "'Tulpen One'")
+		.textBaseline("middle")
+		.textAlign("center")
+		.fillStyle("rgba(255, 255, 255, 0.9)")
+		.fillText(str, xpos, ypos)
+		.append("body");
+*/
+//		$canvas.freq(freqByteData);
+//		$canvas.drawCircle(freqByteData);
+//		$canvas.drawTime();
+
 	}
+
 });
 
 
-$(function(){
+
 var context = new webkitAudioContext();
 var source = null;
 var analyser = context.createAnalyser();
@@ -1693,7 +1751,5 @@ window.addEventListener('keyup', function(e) {
 		press4 = 0;
 	}
 }, false);
-
-});
 
 

@@ -1,151 +1,40 @@
-<html><head>
+<html>
+<head>
+	<title>VJay</title>
 
-<title>VJay</title>
+	<link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Offside" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="./style.css" type="text/css" media="all">
 
-<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="./WebMIDIAPI.js"></script>
+	<script type="text/javascript" src="./particleObject.js"></script>
+	<script type="text/javascript" src="./dateformat.js"></script>
+	<script type="text/javascript" src="./rainbowvis.js"></script>
+	<script type="text/javascript" src="./canvasquery.js"></script>
+	<script type="text/javascript" src="./plugins/basic.js"></script>
+	<script type="text/javascript" src="./main.js"></script>
+	<script type="text/javascript" src="./leap.js"></script>
+	<script type="text/javascript" src="leap.min.js"></script>
 
-<link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Offside" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="../common.css" type="text/css" media="all">
-<link rel="stylesheet" href="kenji.css">
+	<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
+</head>
 
-<script src="./WebMIDIAPI.js"></script>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="./particleObject.js"></script>
-<script type="text/javascript" src="./dateformat.js"></script>
-<script type="text/javascript" src="./rainbowvis.js"></script>
-<script type="text/javascript" src="./canvasquery.js"></script>
-<script type="text/javascript" src="./plugins/snow.js"></script>
-<script type="text/javascript" src="./main.js"></script>
-<script type="text/javascript" src="./leap.js"></script>
-<script src="leap.min.js"></script>
+<body>
+	<canvas id="mask" width="2000" height="600"></canvas>
+	<canvas id="mask1" width="800" height="600"></canvas>
 
-<link rel="SHORTCUT ICON" href="http://sascacci.web.fc2.com/sas.ico">
-
-<style>
-.fft {
-  position: absolute;
-  -webkit-box-reflect: below 5px -webkit-linear-gradient(top, transparent, transparent 50%, rgba(255,255,255,0.2));
-}
-#fft {
-  -webkit-transform: translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg);
-}
-
-video {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-}
-.manual {
-	position: absolute;
-	top: 20px;
-	left: 820px;
-	width: 500px;
-	height: 600px;
-}
-
-.grayscale {
-	-webkit-filter: grayscale(1);
-}
-
-.sepia {
-	-webkit-filter: sepia(1);
-}
-.blur {
-	-webkit-filter: blur(5px);
-}
-
-.invert {
-	-webkit-filter: invert(1);
-}
-
-.brightness {
-	-webkit-filter: brightness(2);
-}
-
-</style>
-
-<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
-
-<body id="deckA" leftmargin="0" topmargin="0" bgcolor="#000" onmousemove="$.drawMousePos()">
-<canvas id="db0" class="fft" width="800" height="600" style="visibility: visible; -webkit-transform: rotateX(0deg) rotateY(0deg) scale(1);"></canvas>
-<canvas id="db1" class="fft" width="800" height="600" style="visibility: hidden; -webkit-transform: rotateX(0deg) rotateY(0deg) scale(1);"></canvas>
-<canvas id="mask" class="fft" width="800" height="600"></canvas>
-
-<div id="menu" class="manual" style="visibility: visible;">
-	<font class="s8">SasVJ leap</font><br><br>
-	<font class="s2">
-		Menu:::Key Operate<br>
-		[O] ::: Type Change<br>
-		[Shift] + [O] ::: Parameter Change<br>
-		[D] ::: Object Contrast &lt;＋&gt;<br>
-		[Shift] + [D] ::: Object Parameter &lt;ー&gt; <br>
-		[L] ::: Object ON/OFF<br>
-		[M] ::: Mask Layer ON/OFF<br>
-		[W] ::: Wave ON/OFF<br>
-		[T] ::: Time ON/OFF<br>
-		[F] ::: FFT ON/OFF<br>
-		[Space] ::: Rect Font Display<br>
-		<br>
-		[X] ::: X-Rotate &lt;+&gt;<br>
-		[Shift] + [X] ::: X-Rotate &lt;-&gt;<br>
-		[Y] ::: Y-Rotate &lt;+&gt;<br>
-		[Shift] + [Y] ::: Y-Rotate &lt;-&gt;<br>
-		[S] ::: Scale &lt;-&gt;<br>
-		[Shift] + [S] ::: Scale&lt;+&gt;<br>
-		[R] ::: Rotate/Scale Reset<br>
-		<br>
-		[U] ::: Menu ON/OFF<br>
-		<br>
-		[P] ::: MIDI ON (need <a href="http://jazz-soft.net/"><font class="s6">Jazz-Plugin</font></a>)<br>
-		<br>
-		[N] ::: Leap Motion ON/OFF<br>
-	</font>
-</div>
-
-<!--
-<body leftmargin="0" topmargin="0" bgcolor="#ffffff" background="./bg.gif" onmousemove="move_sub()">
-<script type="text/javascript" scr="waapisim.js"></script>
--->
-
-
-<script>
-
-//var video = document.querySelector('video');
-//video.classList.add('grayscale');
-//video.classList.add('sepia');
-
-</script>
-
-	<pre id="log">	</pre>
-	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"><object id="_Jazz0.302580181742087ie"><object id="_Jazz0.34474088763818145" type="audio/x-jazz"><p>This page requires the <a href="http://jazz-soft.net/">Jazz plugin</a>.</p></object></object></div>
-
-
-<script type="text/javascript"><!--
-var fhp_c_pc = navigator.userAgent.toLowerCase();
-var fhp_ie = ((fhp_c_pc.indexOf("msie") != -1) && (fhp_c_pc.indexOf("opera") == -1));
-var fhp_cs, fhp_wt, fhp_dm;
-var fhp_rnd = Math.floor(Math.random()*99999999999);
-if (fhp_ie) {
-        fhp_cs = document.charset;
-}else{
-        fhp_cs = document.characterSet;
-}
-fhp_dm = document.location;
-fhp_wt = '<' + 'script src="http://web.fc2.com/footer/footer.php?cs=' + fhp_cs + '&dm=' + fhp_dm + '&rnd=' + fhp_rnd + '" charset="UTF-8"><' + '/script>';
-document.write(fhp_wt);
-//--></script><script src="http://web.fc2.com/footer/footer.php?cs=Shift_JIS&amp;dm=http://sascacci.web.fc2.com/midi/sasvj_leapm.html&amp;rnd=49980917409" charset="UTF-8"></script><div id="fc2_footer" style="text-align: center; width: 100%; line-height: 14px;"><span style="font-size:12px;"><br>Powered by <a target="_blank" href="http://fc2.com/">FC2.com</a></span></div>
-<script>
-(function(){ if(!document.getElementById("fc2_footer")){return;};var ff=document.getElementById("fc2_footer");ff.style.textAlign="center";ff.style.width="100%";ff.style.lineHeight="14px"; })();
-</script>
-
-<!-- FC2, inc.-->
-<img src="http://media.fc2.com/counter_img.php?id=50" style="visibility:hidden" alt="inserted by FC2 system" width="0" height="0">
-<!-- FC2, inc.-->
-</body></html>
+	<div id="MIDIPlugin" style="position:absolute; visibility:hidden">
+		<object id="_Jazz0.302580181742087ie">
+			<object id="_Jazz0.34474088763818145" type="audio/x-jazz">
+			<p>This page requires the <a href="http://jazz-soft.net/">Jazz plugin</a>.</p>
+			</object>
+		</object>
+	</div>
+</body>
+</html>
