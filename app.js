@@ -30,7 +30,11 @@ if ('development' == app.get('env')) {
 
 //app.get('/', routes.index);
 app.get('/',function(req,res){
-  res.sendfile(__dirname + '/public/leap.html');
+  res.sendfile(__dirname + '/public/index.html');
+});
+
+app.get('/darth',function(req,res){
+  res.sendfile(__dirname + '/public/darth.html');
 });
 
 http.createServer(app).listen(app.get('port'), function(){

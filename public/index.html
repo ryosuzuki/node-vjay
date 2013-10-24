@@ -1,27 +1,26 @@
+<html><head>
 
-<html>
-
-<head>
+<title>: : :　SasVJ ｜ SasVJ　: : :</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
 
-<link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Ropa+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Paytone+One' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Offside' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Tulpen+One' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Offside" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="../common.css" type="text/css" media="all">
-<<<<<<< HEAD
 <link rel="stylesheet" href="kenji.css">
 
 <script src="./WebMIDIAPI.js"></script>
-<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="./particleObject.js"></script>
-<script src="./leap.min.js"></script>
+<script type="text/javascript" src="./dateformat.js"></script>
+<script src="leap.min.js"></script>
 
-<LINK REL="SHORTCUT ICON" href="http://sascacci.web.fc2.com/sas.ico">
+<link rel="SHORTCUT ICON" href="http://sascacci.web.fc2.com/sas.ico">
 
 <style>
 .fft {
@@ -66,62 +65,49 @@ video {
 }
 
 </style>
-=======
-<link rel="stylesheet" href="./kenji.css">
 
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="./WebMIDIAPI.js"></script>
-<script type="text/javascript" src="./particleObject.js"></script>
-<script type="text/javascript" src="./leap.min.js"></script>
-<script type="text/javascript" src="./main.js"></script>
-
-<LINK REL="SHORTCUT ICON" href="http://sascacci.web.fc2.com/sas.ico">
-
->>>>>>> 70fe21eb27722df4c6cd500e33b135255b854ad2
-
-</head>
+<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
 
 <body id="deckA" leftmargin="0" topmargin="0" bgcolor="#000" onmousemove="move_sub()">
-<canvas id="db0" class="fft" width="800" height="600"></canvas>
-<canvas id="db1" class="fft" width="800" height="600"></canvas>
+<canvas id="db0" class="fft" width="800" height="600" style="visibility: visible; -webkit-transform: rotateX(0deg) rotateY(0deg) scale(1);"></canvas>
+<canvas id="db1" class="fft" width="800" height="600" style="visibility: hidden; -webkit-transform: rotateX(0deg) rotateY(0deg) scale(1);"></canvas>
 <canvas id="mask" class="fft" width="800" height="600"></canvas>
 
-<div id="menu" class="manual">
+<div id="menu" class="manual" style="visibility: visible;">
 	<font class="s8">SasVJ leap</font><br><br>
 	<font class="s2">
-		Menu:::キー操作<br>
-		[O] ⇒ オブジェクト・タイプ 切り替え<br>
-		[Shift] + [O] ⇒ オブジェクト・パラメータ 切り替え<br>
-		[D] ⇒ オブジェクト・コントラスト <＋><br>
-		[Shift] + [D] ⇒ オブジェクト・コントラスト <ー> <br>
-		[L] ⇒ オブジェクト ON/OFF<br>
-		[M] ⇒ マスク・レイヤー ON/OFF<br>
-		[W] ⇒ 波形表示 ON/OFF<br>
-		[T] ⇒ 時刻表示 ON/OFF<br>
-		[F] ⇒ FFT 表示 ON/OFF<br>
-		[Space] ⇒ 矩形フォント表示<br>
+		Menu:::Key Operate<br>
+		[O] ::: Type Change<br>
+		[Shift] + [O] ::: Parameter Change<br>
+		[D] ::: Object Contrast &lt;＋&gt;<br>
+		[Shift] + [D] ::: Object Parameter &lt;ー&gt; <br>
+		[L] ::: Object ON/OFF<br>
+		[M] ::: Mask Layer ON/OFF<br>
+		[W] ::: Wave ON/OFF<br>
+		[T] ::: Time ON/OFF<br>
+		[F] ::: FFT ON/OFF<br>
+		[Space] ::: Rect Font Display<br>
 		<br>
-		[Shift] + Mouse ⇒ Filter<br>
-		[P] ⇒ サウンド Play/Stop<br>
-		※MP3/AAC/WAVファイル：画面にドラッグ＆ドロップでロード<br>
+		[X] ::: X-Rotate &lt;+&gt;<br>
+		[Shift] + [X] ::: X-Rotate &lt;-&gt;<br>
+		[Y] ::: Y-Rotate &lt;+&gt;<br>
+		[Shift] + [Y] ::: Y-Rotate &lt;-&gt;<br>
+		[S] ::: Scale &lt;-&gt;<br>
+		[Shift] + [S] ::: Scale&lt;+&gt;<br>
+		[R] ::: Rotate/Scale Reset<br>
 		<br>
-		[X] ⇒ X軸回転 <+><br>
-		[Shift] + [X] ⇒ X軸回転 <-><br>
-		[Y] ⇒ Y軸回転 <+><br>
-		[Shift] + [Y] ⇒ Y軸回転 <-><br>
-		[S] ⇒ 縮小<br>
-		[Shift] + [S] ⇒ 拡大<br>
-		[R] ⇒ 回転、拡大縮小 リセット<br>
+		[U] ::: Menu ON/OFF<br>
 		<br>
-		[U] ⇒ Menu ON/OFF<br>
+		[P] ::: MIDI ON (need <a href="http://jazz-soft.net/"><font class="s6">Jazz-Plugin</font></a>)<br>
+		<br>
+		[N] ::: Leap Motion ON/OFF<br>
 	</font>
 </div>
 
-<!---
+<!--
 <body leftmargin="0" topmargin="0" bgcolor="#ffffff" background="./bg.gif" onmousemove="move_sub()">
 <script type="text/javascript" scr="waapisim.js"></script>
-<<<<<<< HEAD
---->
+-->
 
 
 <script>
@@ -244,10 +230,10 @@ var waveOn = 0;
 var colorbarOn = 0;
 var ptOn = 0;
 var kenjiOn = 0;
-var clockOn = 0;
+var clockOn = 1;
 
 var menuOn = 0;
-var leapOn = 0;
+var leapOn = 1;
 var debugNo = 0;
 var fontOn = 0;
 var fontCode = 0;
@@ -258,8 +244,6 @@ var numWLed = 22;
 var text1 = "夢生未来輝空光行真実白葵蒼碧仰証灯里朱曙賭秋邁進鮮烈繊細彷彿伝説禁断梓春夏歩勇樹朝潮海固宴花導姿乳守栄町世界歴参謀超爆凶器鼓舞懺悔斬撃皇帝狼桃牙悶絶獅泳都交迷酔酒呑容秘密救昇降将校惹熟女架懐福吹払拭駆早速奇跡愛情委偉潜隠密回廊偕老席新臨逐圧倒赦縁今日平和専念千年勝葛藤芸萌築乙葉静香清潔響鏡北極眩吟醸敬聡恵蛍轟盛定理科聖賢森雫旬駿瞬間純粋羽幅瞬浄志銀誠成人雪刹那泉仙善禅奏想像創造霜宇宙天大吟醸鷹佑音楽力能月綴恒翼昌永橙虎願信伸鋼楓朝名誉炎命尊富幸茜鐘朱彩砂泉詠詠踊叶絹衣澄汐留梢琴歴史咲穏忍潤舞宝誓太鼓雷継七望希美椿姫苺壱弐参岬南優悠愛恋";
 
 var leapFrame = null;
-
-var crossing = 0;
 
 (function() {
 
@@ -410,88 +394,17 @@ function drawMousePos() {
 function drawClock() {
 	if (clockOn == 0) return;
 	
-	var d = new Date();
-	var ms = d.getMilliseconds();
-	var sec = d.getSeconds();
-	var min = d.getMinutes();
-	var hour = d.getHours();
-	{
-		/*
-		ctx2.font = size + 'px' + "'Arial'";
-		ctx2.font = size + 'px' + "'Paytone One'";
-		ctx2.font = size + 'px' + "'Offside'";
-		ctx2.font = size + 'px' + "'Ropa Sans'";
-		ctx2.font = size + 'px' + "'Open Sans Condensed'";
-		ctx2.font = size + 'px' + "'Dosis'";
-		*/
+	var size = 200;
+	var xpos = 200;
+	var ypos = CANVAS_HEIGHT / 2;
+	ctx2.font = size + 'px' + "'Tulpen One'";
+	ctx2.textAlign = "center";
+	ctx2.textBaseline = "middle";
+	ctx2.fillStyle = 'rgba(255, 255, 255, 0.9)';
 
-		/*
-		var size = 250;
-		var interval = size - 100;
-		var xpos = 0;
-		var ypos = CANVAS_HEIGHT / 2;
-		var mojiCode = 0;
-		var aText = null;
-
-		ctx2.font = size + 'px' + "'Tulpen One'";
-
-		ctx2.textAlign = "center";
-		ctx2.textBaseline = "middle";
-		ctx2.fillStyle = 'rgba(255, 255, 255, 0.9)';
-		
-		mojiCode = Math.floor((sec / 10) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 2, ypos);
-
-		mojiCode = Math.floor((sec % 10) + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText + "'", xpos + interval * 3, ypos);
-
-		mojiCode = Math.floor((ms / 100) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 4, ypos);
-		*/
-
-		var size = 200;
-		var interval = size - 100;
-		var xpos = 100;
-		var ypos = CANVAS_HEIGHT / 2;
-		var mojiCode = 0;
-		var aText = null;
-
-		ctx2.font = size + 'px' + "'Tulpen One'";
-		ctx2.textAlign = "center";
-		ctx2.textBaseline = "middle";
-		ctx2.fillStyle = 'rgba(255, 255, 255, 0.9)';
-
-		mojiCode = Math.floor((hour / 10) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 0, ypos);
-
-		mojiCode = Math.floor((hour % 10) + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText + ":", xpos + interval * 1, ypos);
-		
-		mojiCode = Math.floor((min / 10) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 2, ypos);
-
-		mojiCode = Math.floor((min % 10) + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText + ":", xpos + interval * 3, ypos);
-
-		mojiCode = Math.floor((sec / 10) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 4, ypos);
-
-		mojiCode = Math.floor((sec % 10) + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText + "'", xpos + interval * 5, ypos);
-
-		mojiCode = Math.floor((ms / 100) % 10 + 48);
-		aText = String.fromCharCode(mojiCode);
-		ctx2.fillText(aText, xpos + interval * 6, ypos);
-	}
+	var dateFormat = new DateFormat("HH:mm:ss");
+	var str = dateFormat.format(new Date());
+	ctx2.fillText(str, xpos, ypos);
 }
 
 function drawLeap() {
@@ -514,54 +427,30 @@ function drawLeap() {
 			z = Math.abs(z + 200) * 0.7;
 			var aText = String(j+1);
 			ctx.fillStyle = 'rgba(255, 255, 255, 1)';
-			if (crossing) {
-				if (j == 0) {
-					var aSize = (z / 5) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("Soul", x, y);
-				} else if (j == 1) {
-					var aSize = (z / 5) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("Suites", x, y);
-				} else if (j == 2) {
-					var aSize = (z / 5) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("Sweet", x, y);
-				} else if (j == 3) {
-					var aSize = z + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("3", x, y);
-				} else if (j == 4) {
-					var aSize = z + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("S", x, y);
-				}
-			 } else {
-				if (j == 0) {
-					var aSize = (z / 2) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("SS", x, y);
-				} else if (j == 1) {
-					var aSize = (z / 2) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("ING", x, y);
-				} else if (j == 2) {
-					var aSize = (z / 2) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("RO", x, y);
-				} else if (j == 3) {
-					var aSize = z + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("★", x, y);
-				} else if (j == 4) {
-					var aSize = (z*0.8) + 'px';
-					ctx.font = aSize + "'Offside'";
-					ctx.fillText("C", x, y);
-				}
-			 }
+			if (j == 0) {
+				var aSize = (z / 5) + 'px';
+				ctx.font = aSize + "'Offside'";
+				ctx.fillText("Sascacci", x, y);
+			} else if (j == 1) {
+				var aSize = (z / 5) + 'px';
+				ctx.font = aSize + "'Offside'";
+				ctx.fillText("Switch", x, y);
+			} else if (j == 2) {
+				var aSize = (z / 5) + 'px';
+				ctx.font = aSize + "'Offside'";
+				ctx.fillText("Static", x, y);
+			} else if (j == 3) {
+				var aSize = (z / 4) + 'px';
+				ctx.font = aSize + "'Offside'";
+				ctx.fillText("State", x, y);
+			} else if (j == 4) {
+				var aSize = (z / 3) + 'px';
+				ctx.font = aSize + "'Offside'";
+				ctx.fillText("Sync", x, y);
+			} 
 			ctx.fillStyle = 'rgba(200, 200, 200, 0.2)';
 			ctx.beginPath();
-			ctx.arc(x, y, z*0.7, 0, Math.PI*2, false);
+			ctx.arc(x, y, z/2, 0, Math.PI*2, false);
 			ctx.fill();
 		}
 	}
@@ -1693,7 +1582,6 @@ window.addEventListener('keydown', function(e) {
 		}
 		mojiX = Math.floor(Math.random() * 1000) + 150;
 		mojiY = 450 + Math.floor(Math.random() * 400);
-		runTest();
 	}
 	if (e.keyCode == 16) { // [Shift]
 		pressedShift = 1;
@@ -1774,8 +1662,6 @@ window.addEventListener('keydown', function(e) {
 		}
 	}
 	if (e.keyCode == 80) { // [P]
-	
-		crossing = 1 - crossing;
 		/*
 		if (!audio.paused) {
 			audio.pause();
@@ -1783,6 +1669,7 @@ window.addEventListener('keydown', function(e) {
 			audio.play();
 		}
 		*/
+		runTest();
 	}
 	if (e.keyCode == 82) { // [R]
 		cssRotX = 0;
@@ -1928,14 +1815,9 @@ Leap.loop(function(obj) {
 });
 
 </script>
-=======
--->
 
->>>>>>> 70fe21eb27722df4c6cd500e33b135255b854ad2
-
-	<pre id="log">
-	</pre>
-	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"></div>
+	<pre id="log">	</pre>
+	<div id="MIDIPlugin" style="position:absolute; visibility:hidden"><object id="_Jazz0.302580181742087ie"><object id="_Jazz0.34474088763818145" type="audio/x-jazz"><p>This page requires the <a href="http://jazz-soft.net/">Jazz plugin</a>.</p></object></object></div>
 
 
 <script type="text/javascript"><!--
@@ -1951,8 +1833,12 @@ if (fhp_ie) {
 fhp_dm = document.location;
 fhp_wt = '<' + 'script src="http://web.fc2.com/footer/footer.php?cs=' + fhp_cs + '&dm=' + fhp_dm + '&rnd=' + fhp_rnd + '" charset="UTF-8"><' + '/script>';
 document.write(fhp_wt);
-//--></script>
+//--></script><script src="http://web.fc2.com/footer/footer.php?cs=Shift_JIS&amp;dm=http://sascacci.web.fc2.com/midi/sasvj_leapm.html&amp;rnd=49980917409" charset="UTF-8"></script><div id="fc2_footer" style="text-align: center; width: 100%; line-height: 14px;"><span style="font-size:12px;"><br>Powered by <a target="_blank" href="http://fc2.com/">FC2.com</a></span></div>
+<script>
+(function(){ if(!document.getElementById("fc2_footer")){return;};var ff=document.getElementById("fc2_footer");ff.style.textAlign="center";ff.style.width="100%";ff.style.lineHeight="14px"; })();
+</script>
+
 <!-- FC2, inc.-->
-<img src="http://media.fc2.com/counter_img.php?id=50" style="visibility:hidden" alt="inserted by FC2 system" width="0" height="0" />
+<img src="http://media.fc2.com/counter_img.php?id=50" style="visibility:hidden" alt="inserted by FC2 system" width="0" height="0">
 <!-- FC2, inc.-->
 </body></html>
