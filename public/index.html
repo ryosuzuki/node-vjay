@@ -1,40 +1,65 @@
 <html>
 <head>
-	<title>VJay</title>
+  <title>HAMAMATSU</title>
 
-	<link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Offside" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="./style.css" type="text/css" media="all">
+  <link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Offside" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Dosis" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Tulpen+One" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="./style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="./pumpkin.css" type="text/css" media="all">
 
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src="./WebMIDIAPI.js"></script>
-	<script type="text/javascript" src="./particleObject.js"></script>
-	<script type="text/javascript" src="./dateformat.js"></script>
-	<script type="text/javascript" src="./rainbowvis.js"></script>
-	<script type="text/javascript" src="./canvasquery.js"></script>
-	<script type="text/javascript" src="./plugins/basic.js"></script>
-	<script type="text/javascript" src="./main.js"></script>
-	<script type="text/javascript" src="./leap.js"></script>
-	<script type="text/javascript" src="leap.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-	<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
+
+  <script type="text/javascript" src="./main.js"></script>
+
+  <script type="text/javascript" src="./plugins/webmidi.js"></script>
+  <script type="text/javascript" src="./plugins/particleObject.js"></script>
+  <script type="text/javascript" src="./plugins/dateformat.js"></script>
+  <script type="text/javascript" src="./plugins/rainbowvis.js"></script>
+  <script type="text/javascript" src="./plugins/canvasquery.js"></script>
+  <script type="text/javascript" src="./plugins/leap.js"></script>
+  <script type="text/javascript" src="./plugins/sketch.js"></script>
+  <script type="text/javascript" src="./plugins/stats.js"></script>
+  <script type="text/javascript" src="./plugins/dat.gui.js"></script>
+  <script type="text/javascript" src="./plugins/rotate.js"></script>
+
+  <script type="text/javascript" src="./effects/basic.js"></script>
+  <script type="text/javascript" src="./effects/orbit.js"></script>
+  <script type="text/javascript" src="./effects/spotlight.js"></script>
+  <script type="text/javascript" src="./effects/rain.js"></script>
+  <script type="text/javascript" src="./effects/magic.js"></script>
+  <script type="text/javascript" src="./effects/pumpkin.js"></script>
+
+  <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
 </head>
 
 <body>
-	<canvas id="mask" width="2000" height="600"></canvas>
-	<canvas id="mask1" width="800" height="600"></canvas>
 
-	<div id="MIDIPlugin" style="position:absolute; visibility:hidden">
-		<object id="_Jazz0.302580181742087ie">
-			<object id="_Jazz0.34474088763818145" type="audio/x-jazz">
-			<p>This page requires the <a href="http://jazz-soft.net/">Jazz plugin</a>.</p>
-			</object>
-		</object>
-	</div>
+  <canvas class="pumpkin" id="pumpkin-1" width="300" height="300"></canvas>
+  <canvas class="pumpkin" id="pumpkin-2" width="500" height="500"></canvas>
+  <canvas class="pumpkin" id="pumpkin-3" width="400" height="800"></canvas>
+  <canvas class="pumpkin" id="pumpkin-4" width="200" height="500"></canvas>
+  <canvas class="pumpkin" id="pumpkin-5" width="400" height="200"></canvas>
+  <canvas class="pumpkin" id="pumpkin-6" width="200" height="100"></canvas>
+  <canvas class="pumpkin" id="pumpkin-7" width="200" height="300"></canvas>
+ 
+  <canvas id="spotlight" width="1300" height="800"></canvas>
+  <canvas id="mask" width="1300" height="800"></canvas>
+  <div id="gui"></div>
+
+
+
+  <div id="MIDIPlugin" style="position:absolute; visibility:hidden">
+    <object id="_Jazz0.302580181742087ie">
+      <object id="_Jazz0.34474088763818145" type="audio/x-jazz">
+	<p>This page requires the <a href="http://jazz-soft.net/">Jazz plugin</a>.</p>
+      </object>
+    </object>
+  </div>
 </body>
 </html>

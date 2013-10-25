@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700|Bigelow+Rules);
+
 body {
 	margin: 0;
 	padding: 0;
@@ -5,9 +7,67 @@ body {
 	height: 100%;
 	overflow: hidden;
 	font-family: "Ubuntu", sans-serif;
+//  -webkit-animation: pulse-bg 0.5s infinite; 
+	background: rgb(123, 34, 148);
 }
 
-#mask {
-	width: 100%;
-	height: 100%;
+.pumpkin {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2; 
 }
+
+#pumpkin-1 {
+	left: 800;
+	top: 0;
+}
+#pumpkin-2 {
+	left: 300;
+	top: 200;
+}
+#pumpkin-3 {
+	left: 600;
+	top: -300;
+}
+#pumpkin-4 {
+	left: 1000;
+	top: 0;
+}
+#pumpkin-5 {
+	left: 300;
+	top: 200;
+}
+#pumpkin-6 {
+	left: 600;
+	top: -300;
+}
+#pumpkin-6 {
+	left: 600;
+	top: -300;
+}
+
+
+#mask {
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	z-index: 1; 
+}
+
+#gui {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+
+@-webkit-keyframes pulse-bg {
+	0% {background-color: #372662;} 
+	25% {background-color: #372662;}
+	50% {background-color: #422e77;}
+	100% {background-color: #372662;}
+}
+
+
+

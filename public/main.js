@@ -1,78 +1,54 @@
 
 $(function(){
-	var $canvas = $("#mask");
+	window.canvas = document.getElementById('mask');
+	window.ctx = window.canvas.getContext('2d');
 
-	cq($canvas[0])
-  .fillStyle("#ff0000")
-  .fillRect(64, 64, 32, 32);
+	window.purpleColor = "rgb(123, 34, 148)";
 
-	var context = new webkitAudioContext();
-	var analyser = context.createAnalyser();
+	var canvas = window.canvas; 
+  var ctx = window.ctx;
 
-	navigator.webkitGetUserMedia(
-		{video: false, audio: true}, 
-		function(stream) {
-			var microphone = context.createMediaStreamSource(stream);
-			microphone.connect(analyser);		
-		}
-	);
+  var context = new webkitAudioContext();
+  var analyser = context.createAnalyser();
+  navigator.webkitGetUserMedia(
+    {video: false, audio: true}, 
+    function(stream) {
+      var microphone = context.createMediaStreamSource(stream);
+      microphone.connect(analyser);		
+    }
+  );
 
-	cq($("#mask1")[0])	
-	.fillStyle("#ff0000")
-  .fillRect(64, 64, 32, 32);
+	$.drawSpotlight();
+	$.drawPumpkin(0);
+	$.drawPumpkin(1);
+	$.drawPumpkin(2);
+	$.drawPumpkin(3);
+	$.drawPumpkin(4);
+	$.drawPumpkin(5);
+	$.drawPumpkin(6);
 
-	drawAnimation();
+  drawAnimation();
 
-	function drawAnimation() {
-		window.webkitRequestAnimationFrame(drawAnimation, $canvas);
-		cq($canvas[0]).clear();
+  function drawAnimation() {
+    window.webkitRequestAnimationFrame(drawAnimation, canvas);
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-		var freqByteData = new Uint8Array(analyser.frequencyBinCount);
-		analyser.getByteFrequencyData(freqByteData); 
+    var freqByteData = new Uint8Array(analyser.frequencyBinCount);
+    analyser.getByteFrequencyData(freqByteData); 
 
-		console.log(analyser);
+//    console.log(analyser);
 
+  	var volume = getAverageVolume(freqByteData);
 
-		var fftBars = freqByteData.length;
-		var rainbow = new Rainbow();
-		rainbow.setNumberRange(1, fftBars - 1);
-		rainbow.setSpectrum('orange', 'yellow');
-		for (var i = 0; i < fftBars; i++) {
-			var magnitude = freqByteData[i];
-			//var xlog = Math.LOG10E * Math.log(i*50)*200 - 200;
-			var xlog = i * 5;
-			cq($canvas[0])
-			.fillStyle(rainbow.colourAt(i))
-			.fillRect(xlog, 600, 2, -magnitude);
-		}
-
-//		var volume = getAverageVolume(freqByteData);
-//		cq($canvas[0])
-//		.arc(70, 70, 70, 0, Math.PI*2, false)
-//		.fill();
+//    console.log(volume);
+		$.drawFftBars(freqByteData);
+		$.drawCircle(volume);
+		$.drawTime();
 
 
-		var size = 200;
-		var xpos = 200;
-		var ypos = 200;
+//		$.drawOrbit();
 
-		var dateFormat = new DateFormat("HH:mm:ss");
-		var str = dateFormat.format(new Date());
-
-	
-/*
-		.font(size + "px" + "'Tulpen One'")
-		.textBaseline("middle")
-		.textAlign("center")
-		.fillStyle("rgba(255, 255, 255, 0.9)")
-		.fillText(str, xpos, ypos)
-		.append("body");
-*/
-//		$canvas.freq(freqByteData);
-//		$canvas.drawCircle(freqByteData);
-//		$canvas.drawTime();
-
-	}
+  }
 
 });
 
