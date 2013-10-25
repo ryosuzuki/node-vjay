@@ -8,7 +8,16 @@ body {
 	overflow: hidden;
 	font-family: "Ubuntu", sans-serif;
 //  -webkit-animation: pulse-bg 0.5s infinite; 
-	background: rgb(123, 34, 148);
+	background: #4d004d;
+}
+
+#container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 5;
 }
 
 .pumpkin {
@@ -48,7 +57,7 @@ body {
 }
 
 
-#mask {
+#main {
 	position: absolute; 
 	left: 0; 
 	top: 0; 

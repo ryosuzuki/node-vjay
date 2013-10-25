@@ -26,7 +26,7 @@
   <script type="text/javascript" src="./plugins/sketch.js"></script>
   <script type="text/javascript" src="./plugins/stats.js"></script>
   <script type="text/javascript" src="./plugins/dat.gui.js"></script>
-  <script type="text/javascript" src="./plugins/rotate.js"></script>
+  <script type="text/javascript" src="./plugins/jquery.rotate.js"></script>
 
   <script type="text/javascript" src="./effects/basic.js"></script>
   <script type="text/javascript" src="./effects/orbit.js"></script>
@@ -34,11 +34,13 @@
   <script type="text/javascript" src="./effects/rain.js"></script>
   <script type="text/javascript" src="./effects/magic.js"></script>
   <script type="text/javascript" src="./effects/pumpkin.js"></script>
+  <script type="text/javascript" src="./effects/particles.js"></script>
 
   <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style>
 </head>
 
 <body>
+  <div id="container"></div>
 
   <canvas class="pumpkin" id="pumpkin-1" width="300" height="300"></canvas>
   <canvas class="pumpkin" id="pumpkin-2" width="500" height="500"></canvas>
@@ -49,8 +51,8 @@
   <canvas class="pumpkin" id="pumpkin-7" width="200" height="300"></canvas>
  
   <canvas id="spotlight" width="1300" height="800"></canvas>
-  <canvas id="mask" width="1300" height="800"></canvas>
-  <div id="gui"></div>
+  <canvas id="main" width="1300" height="800"></canvas>
+
 
 
 

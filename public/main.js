@@ -1,12 +1,11 @@
 
 $(function(){
-	window.canvas = document.getElementById('mask');
+	window.canvas = document.getElementById('main');
 	window.ctx = window.canvas.getContext('2d');
-
-	window.purpleColor = "rgb(123, 34, 148)";
 
 	var canvas = window.canvas; 
   var ctx = window.ctx;
+
 
   var context = new webkitAudioContext();
   var analyser = context.createAnalyser();
@@ -28,7 +27,6 @@ $(function(){
 	$.drawPumpkin(6);
 
   drawAnimation();
-
   function drawAnimation() {
     window.webkitRequestAnimationFrame(drawAnimation, canvas);
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -36,11 +34,7 @@ $(function(){
     var freqByteData = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(freqByteData); 
 
-//    console.log(analyser);
-
   	var volume = getAverageVolume(freqByteData);
-
-//    console.log(volume);
 		$.drawFftBars(freqByteData);
 		$.drawCircle(volume);
 		$.drawTime();
