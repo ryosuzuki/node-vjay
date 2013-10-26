@@ -26,7 +26,10 @@ $(function(){
 	$.drawPumpkin(5);
 	$.drawPumpkin(6);
 
-  drawAnimation();
+	$.leapMotion();
+
+	drawAnimation();
+
   function drawAnimation() {
     window.webkitRequestAnimationFrame(drawAnimation, canvas);
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -40,9 +43,12 @@ $(function(){
 		$.drawTime();
 
 
+
 //		$.drawOrbit();
 
   }
+
+
 
 });
 
