@@ -54,7 +54,7 @@ $.drawTime = function() {
 	var ctx = window.ctx;
 
 	var size = 200;
-	var xpos = 200;
+	var xpos = 400;
 	var ypos = 200;
 
 	var dateFormat = new DateFormat("HH:mm:ss");

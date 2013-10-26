@@ -26,7 +26,7 @@ $(function(){
 	$.drawPumpkin(5);
 	$.drawPumpkin(6);
 
-	$.leapMotion();
+//	$.leapMotion();
 
 	drawAnimation();
 
