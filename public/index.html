@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Happy Halloween</title>
+  <title>Happy Halloween VJ</title>
 
   <link href="http://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
@@ -40,6 +40,28 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=125719687629033";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>  
+  <header class="info">
+    <hgroup class="about">
+      <h1>Happy Haloween VJ</h1>
+      <h2>developed by<a href="http://ryooopan.com" target="_blank">@ryooopan</a></h2>
+      <a href="https://github.com/ryooopan/node-vjay" target="_blank">View on Github</a>
+    </hgroup>
+    <nav class="more">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="ryooopan">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>      
+      <div class="fb-like" data-href="http://halloween.ryooopan.com" data-width="The pixel width of the plugin" data-height="The pixel height of the plugin" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true" data-send="false"></div> 
+    </nav>
+  </header>
+
+
   <div id="container"></div>
 
   <canvas class="pumpkin" id="pumpkin-1" width="300" height="300"></canvas>
@@ -50,8 +72,8 @@
   <canvas class="pumpkin" id="pumpkin-6" width="200" height="100"></canvas>
   <canvas class="pumpkin" id="pumpkin-7" width="200" height="300"></canvas>
  
-  <canvas id="spotlight" width="1300" height="800"></canvas>
-  <canvas id="main" width="1300" height="800"></canvas>
+  <canvas id="spotlight" width="1600" height="800"></canvas>
+  <canvas id="main" width="1600" height="800"></canvas>
 
 
 

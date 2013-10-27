@@ -1,11 +1,12 @@
 
+
+
 $(function(){
 	window.canvas = document.getElementById('main');
 	window.ctx = window.canvas.getContext('2d');
 
 	var canvas = window.canvas; 
   var ctx = window.ctx;
-
 
   var context = new webkitAudioContext();
   var analyser = context.createAnalyser();
@@ -45,9 +46,49 @@ $(function(){
 
 
 //		$.drawOrbit();
-
   }
 
+  resize();
+
+	function resize() {
+
+	  var canvas = window.canvas
+	  var canvasRatio = canvas.height / canvas.width;
+	  var windowRatio = window.innerHeight / window.innerWidth;
+	  var width;
+	  var height;
+
+	  if (windowRatio < canvasRatio) {
+	      height = window.innerHeight;
+	      width = height / canvasRatio;
+	  } else {
+	      width = window.innerWidth;
+	      height = width * canvasRatio;
+	  }
+
+	  canvas.style.width = width + 'px';
+	  canvas.style.height = height + 'px';
+
+	  var canvas = document.getElementById('spotlight');
+	  var canvasRatio = canvas.height / canvas.width;
+	  var windowRatio = window.innerHeight / window.innerWidth;
+	  var width;
+	  var height;
+
+//	  if (windowRatio < canvasRatio) {
+//	      height = window.innerHeight;
+//	      width = height / canvasRatio;
+//	  } else {
+	      width = window.innerWidth;
+	      height = width * canvasRatio;
+//	  }
+
+	  canvas.style.width = width + 'px';
+	  canvas.style.height = height + 'px';
+
+	};
+
+	window.addEventListener('resize', resize, false);
 
 
 });

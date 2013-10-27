@@ -1,12 +1,6 @@
-
-
 $.drawSpotlight = function() {
-//	var canvas = window.canvas;
-//	var ctx = window.ctx;
-
 	var canvas = document.getElementById('spotlight');
 	var ctx = canvas.getContext('2d');
-
 
 	var orange = "#FF9100";
 	var purple = "#4d004d";
@@ -34,6 +28,9 @@ $.drawSpotlight = function() {
 		'beam4': '255,255,255',
 		'beam5': '255,255,255',
 		'beam6': '255,255,255',
+		'beam7': '255,255,255',
+		'beam8': '255,255,255',
+		'beam9': '255,255,255',
 	}
 
 	beams = [];
