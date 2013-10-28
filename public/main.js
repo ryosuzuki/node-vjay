@@ -8,16 +8,6 @@ $(function(){
 	var canvas = window.canvas; 
   var ctx = window.ctx;
 
-  var context = new webkitAudioContext();
-  var analyser = context.createAnalyser();
-  navigator.webkitGetUserMedia(
-    {video: false, audio: true}, 
-    function(stream) {
-      var microphone = context.createMediaStreamSource(stream);
-      microphone.connect(analyser);		
-    }
-  );
-
 	$.drawSpotlight();
 	$.drawPumpkin(0);
 	$.drawPumpkin(1);
@@ -29,18 +19,33 @@ $(function(){
 
 //	$.leapMotion();
 
+	var isChrome = window.chrome
+	if(isChrome){
+	  var context = new webkitAudioContext();
+	  var analyser = context.createAnalyser();
+	  navigator.webkitGetUserMedia(
+	    {video: false, audio: true}, 
+	    function(stream) {
+	      var microphone = context.createMediaStreamSource(stream);
+	      microphone.connect(analyser);		
+	    }
+	  );
+	}
+	
 	drawAnimation();
 
   function drawAnimation() {
     window.webkitRequestAnimationFrame(drawAnimation, canvas);
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    var freqByteData = new Uint8Array(analyser.frequencyBinCount);
-    analyser.getByteFrequencyData(freqByteData); 
+		if (analyser != undefined) {
+	    var freqByteData = new Uint8Array(analyser.frequencyBinCount);
+	    analyser.getByteFrequencyData(freqByteData); 
 
-  	var volume = getAverageVolume(freqByteData);
-		$.drawFftBars(freqByteData);
-		$.drawCircle(volume);
+	  	var volume = getAverageVolume(freqByteData);
+			$.drawFftBars(freqByteData);
+			$.drawCircle(volume);
+		}
 		$.drawTime();
 
 
