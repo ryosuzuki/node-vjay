@@ -23,13 +23,15 @@ $(function(){
 	if(isChrome){
 	  var context = new webkitAudioContext();
 	  var analyser = context.createAnalyser();
-	  navigator.webkitGetUserMedia(
-	    {video: false, audio: true}, 
-	    function(stream) {
+
+	  navigator.getUserMedia = ( navigator.getUserMedia    || navigator.webkitGetUserMedia ||
+				     navigator.mozGetUserMedia ||navigator.msGetUserMedia);
+	  if (navigator.getUserMedia) {
+	    navigator.webkitGetUserMedia( {video: false, audio: true}, function(stream) {
 	      var microphone = context.createMediaStreamSource(stream);
 	      microphone.connect(analyser);		
-	    }
-	  );
+	    }, function(){ console.warn("Error getting audio stream from getUserMedia")} );
+	  }
 	}
 	
 	drawAnimation();
@@ -134,19 +136,19 @@ var s3idx = 0;
 
 var fontCtg = 0;
 
-navigator.webkitGetUserMedia(
-	{video: false, audio: true}, 
-	function(stream) {
-		var microphone = context.createMediaStreamSource(stream);
-		microphone.connect(analyser);
-		
-		//var video = document.querySelector('video');
-		//video.src = window.URL.createObjectURL(stream);
+navigator.getUserMedia = ( navigator.getUserMedia    || navigator.webkitGetUserMedia ||
+			   navigator.mozGetUserMedia ||navigator.msGetUserMedia);
+if (navigator.getUserMedia) {
+  navigator.webkitGetUserMedia( {video: false, audio: true}, function(stream) {
+    var microphone = context.createMediaStreamSource(stream);
+    microphone.connect(analyser);
+    //var video = document.querySelector('video');
+    //video.src = window.URL.createObjectURL(stream);
 
-		//video.onloadedmetadata = function(e) {
-		//};
-	}
-);
+    //video.onloadedmetadata = function(e) {
+    //};
+  }, function (){ console.warn("Error getting audio stream from getUserMedia")} );
+}
 
 /*
 
